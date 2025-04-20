@@ -1,0 +1,68 @@
+<div class="text-center">
+    <strong class="card-title">RESUMEN DE COMPRA</strong>
+  </div>
+<hr>
+@for (c of dataCart; track c) {
+    <div class="card mb-3" style="max-width: 540px; margin: 0 auto;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src={{c.image}} class="img-fluid rounded-start" alt="..."> 
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{c.name}}</h5>
+              <p class="card-text">Cantidad: {{c.cartitems}}</p>
+              <p class="card-text"><small class="text-body-secondary">Precio: {{c.price| currency:'MXN':'symbol'}}</small></p>
+              <p class="card-text"><strong class="text-body-secondary">Total: {{c.price*c.cartitems| currency:'MXN':'symbol'}}</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>}
+<hr>
+<div class="hr"></div>
+<hr>
+<div class="text-center">
+    <strong class="card-title">DATOS DE ENVÍO</strong>
+  </div>
+  <hr>
+
+  <div class="card mx-auto" style="width: 50rem;">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-body-secondary">Información de contacto</h6>
+      <h6 class="card-text">Nombre: {{dataClient.name}}</h6>
+      <h6 class="card-text">Email: {{dataClient.email}}</h6>
+      <h6 class="card-text">Teléfono/Móvil: {{dataClient.tel}}</h6>
+      <hr>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Enviar a la dirección</h6>
+      <h6 class="card-text">Dirección: {{dataClient.adress}} {{dataClient.cp}} {{dataClient.city}}</h6>
+    </div>
+  </div>
+  
+<hr>
+
+<div style="display: flex; gap: 12rem; text-align: center; justify-content: center;">
+    <div>
+      <p class="card-text"><strong class="text-body-secondary">Subtotal</strong></p>
+      <p class="card-text"><strong class="text-body-secondary">Descuentos</strong></p>
+      <p class="card-text"><strong class="text-body-secondary">Gastos de envío</strong></p>
+    </div>
+    <div>
+      <p class="card-text"><strong class="text-body-secondary">{{totalCompra | currency:'MXN':'symbol'}}</strong></p>
+      <p class="card-text"><strong class="text-body-secondary">N/A</strong></p>
+      <p class="card-text"><strong class="text-body-secondary">Gratis</strong></p>
+    </div>
+  </div>
+<hr>
+<div class="text-center"><strong class="card-title">TOTAL A PAGAR: {{totalCompra | currency:'MXN':'symbol'}}</strong></div>
+<hr>
+<div class="text-center" #tyc> 
+  <label for="tyc"><strong> Acepto terminos y condiciones </strong></label>
+  <input type="checkbox" style="margin-left: 5px;"><p></p>
+  <label for="tyc"><strong> Acepto el tratamiento de datos personales </strong></label>
+  <input type="checkbox" style="margin-left: 5px;"><p></p>
+  <button type="button" class="btn btn-dark" (click)="fncompra()">COMPRAR AHORA</button>
+</div>
+  <br><br>
+
+
+

@@ -1,0 +1,26 @@
+<div class="row g-3">
+    @for (i of product; track i) {
+   <div class="card col-md-3 ms-3 me-3 cardProduct" style="width: 18rem;">
+       <img src={{i.image}} class="card-img-top" alt="Error al cargar" style="object-fit: cover; width: 100%; height: 200px;">
+       <div class="card-body">
+         <h5 class="card-title text-center">{{i.name}}</h5>
+         <p class="card-text">{{i.description}}</p>
+         <p class="card-text">{{i.price| currency:'MXN':'symbol'}}</p>
+         <p [ngClass]=
+         "{
+            'card-text text-success': i.quantity > 0,
+            'card-text text-danger': i.quantity === 0, 
+        }"
+            >Stock: {{i.quantity}} piezas</p>
+         <div class="botones">
+           <a href="#" class="btn btn-primary">Ver</a>
+           <button class="btn btn-danger" [disabled]="i.quantity <=0" (click)="fnaddtoCart(i.name)"> Agregar <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+         </div>
+       </div>
+     </div> } 
+   </div> 
+   <br>
+
+
+   

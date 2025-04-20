@@ -1,0 +1,9 @@
+.cardProduct{
+    background-image: url("/assets/images/fondoCard.avif");
+    background-size: cover;
+    
+}
+
+h5,p{
+    color: aliceblue;
+}

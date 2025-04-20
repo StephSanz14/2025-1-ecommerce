@@ -1,0 +1,77 @@
+<strong class="card-title" style="margin-left: 10px;">CHECKOUT</strong>
+<hr>
+<div class="text-center">
+<p class="card-text"><strong class="text-body-secondary">¿Ya estás registrado? </strong><span style="text-decoration: underline; cursor: pointer;font-weight: bolder;">Acceder</span></p>
+<p class="card-text"><strong class="text-body-secondary">O puedes realizar el checkout como invitado</strong></p>
+</div>
+<hr>
+<br>
+<div class="d-flex justify-content-center align-items-center">
+<form [formGroup]="user" (ngSubmit)="fnOnSubmit($event)" class="p-4 border rounded shadow bg-light" style="width: 40%;">
+    <p class="card-text">REGISTRO DE DATOS</p>
+    <hr>
+    <strong class="card-title"><strong class="card-title" style="margin-left: 10px;"></strong><i class="fa-solid fa-1"></i> IDENTIFICACIÓN</strong>
+    <br>
+    <br>
+    <!-- Nombre -->
+    <label for="name" class="form-label">Nombre</label>
+      <input type="text" id="name" class="form-control mb-3" formControlName="name" placeholder="Ingrese su nombre completo">
+      @if (user.get('name')?.hasError('required') && user.get('name')?.touched) {
+        <small class="text-danger">Este campo no puede estar vacío</small>
+        <br>
+      }
+      <!-- email -->
+      <label for="email" class="form-label">E-mail</label>
+      <input type="text" id="email" class="form-control mb-3" formControlName="email" placeholder="Ingrese su email">
+      @if (user.get('email')?.hasError('required') && user.get('email')?.touched) {
+        <small class="text-danger">Este campo no puede estar vacío</small>
+        <br> }
+        @if(user.get('email')?.hasError('email') && user.get('email')?.touched){
+            <small class="text-danger">Este email no es válido</small>
+        <br>
+      }
+      <!-- telefono -->
+      <label for="tel" class="form-label">Teléfono</label>
+      <input type="text" id="tel" class="form-control mb-3" formControlName="tel" placeholder="Ingrese su número">
+      @if (user.get('tel')?.hasError('required') && user.get('tel')?.touched) {
+        <small class="text-danger">Este campo no puede estar vacío</small>}
+        @if(user.get('tel')?.hasError('minlength') && user.get('tel')?.touched){
+            <small class="text-danger">El teléfono debe tener al menos 10 dígitos</small>
+        }
+        @if(user.get('tel')?.hasError('maxlength') && user.get('tel')?.touched){
+            <small class="text-danger">El teléfono debe tener al menos 10 dígitos</small>
+        }
+        <br>
+      <hr>
+      <br>
+      <strong class="card-title"><strong class="card-title" style="margin-left: 10px;"></strong><i class="fa-solid fa-2"></i> DATOS DE ENVÍO</strong>
+        <br><br>
+      <!-- Calle y numero -->
+      <label for="adress" class="form-label">Dirección</label>
+      <input type="text" id="adress" class="form-control mb-3" formControlName="adress" placeholder="Ingrese calle y número">
+      @if (user.get('adress')?.hasError('required') && user.get('adress')?.touched) {
+        <small class="text-danger">Este campo no puede estar vacío</small>
+        <br>
+      }
+      <!-- codigo postal -->
+      <label for="tel" class="form-label">Código Postal</label>
+      <input type="text" id="tel" class="form-control mb-3" formControlName="cp" placeholder="Ingrese su código postal">
+      @if (user.get('cp')?.hasError('required') && user.get('cp')?.touched) {
+        <small class="text-danger">Este campo no puede estar vacío</small> <br>}
+        @if(user.get('cp')?.hasError('minlength') && user.get('cp')?.touched){
+            <small class="text-danger">El código postal debe tener 5 dígitos</small> <br>
+        }
+        @if(user.get('cp')?.hasError('maxlength') && user.get('cp')?.touched){
+            <small class="text-danger">El código postal debe tener 5 dígitos</small> <br>
+        }
+      <!-- ciudad -->
+      <label for="adress" class="form-label">Ciudad</label>
+      <input type="text" id="adress" class="form-control mb-3" formControlName="city" placeholder="Ingrese ciudad">
+      @if (user.get('city')?.hasError('required') && user.get('city')?.touched) {
+        <small class="text-danger">Este campo no puede estar vacío</small>
+        <br>
+      } <br>
+      <div class="text-end">
+      <button [disabled]="!user.valid" type="submit" class="btn btn-dark"><i class="fa-solid fa-wallet"></i> CONFIRMAR Y PROCEDER AL PAGO</button></div>    
+</form></div>
+<br>
